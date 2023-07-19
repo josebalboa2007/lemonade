@@ -1,3 +1,6 @@
+//This code will make it so that it will load 5 customers in and when you click anywhere on the screen, a new random customer will pop up from one of the 5 loaded customers.
+//I haven't made the customer images yet, so it's gonna look weird when you run it, but we're doing art tomorrow, so I'll add it then.
+
 const config = {
     type: Phaser.AUTO,
     width: '100%',
