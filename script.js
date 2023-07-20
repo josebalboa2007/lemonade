@@ -1,12 +1,17 @@
 //This code will make it so that it will load 5 customers in and when you click anywhere on the screen, a new random customer will pop up from one of the 5 loaded customers.
 //I haven't made the customer images yet, so it's gonna look weird when you run it, but we're doing art tomorrow, so I'll add it then.
 
+let level = 4;
+
 class Customer extends Phaser.Physics.Arcade.Sprite {
+    order;
     constructor(scene, x, y) {
         let texture = 'customer' + Phaser.Math.Between(1, 5);
         super(scene, x, y, texture);
         scene.add.existing(this);
-        scene.physics.add.existing(this);
+
+        this.width = 100;
+        this.height = 100;
 
         this.order = getOrder(level);
         console.log(this.order);
@@ -30,8 +35,6 @@ const config = {
         update: update
     }
 };
-
-let level = 1;
 
 const game = new Phaser.Game(config);
 
@@ -58,12 +61,26 @@ function create() {
     bg.width = game.config.width;
     bg.height = game.config.height;
 
+    this.input.on('pointerdown', (pointer) => {
+        customer.destroy();
+        customer = new Customer(this, pointer.x, pointer.y);
+    });
+
+    customer = new Customer(this, 400, 400);
     this.input.on('pointerdown', onPointerDown);
     customer = new Customer(this, 0, 0);
 }
 
 function onPointerDown(pointer) {
     if (clickEnabled) {
+        // const centerX = game.config.width / 2;
+        // const centerY = game.config.height / 2;
+        // const customerKey = 'customer' + Phaser.Math.Between(1, 5);
+        // const customerSize = Phaser.Math.Between(customer1_size, customer5_size);
+        // customer = new Customer(this, centerX, centerY);
+        // const scalePercentage = customerSize / 100;
+        // customer.setScale(scalePercentage);
+        // clickEnabled = false;
         const centerX = game.config.width / 2;
         const centerY = game.config.height / 2;
         const customerKey = 'customer' + Phaser.Math.Between(1, 5);
