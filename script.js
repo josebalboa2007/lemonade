@@ -58,8 +58,8 @@ function preload() {
 
 function create() {
     const bg = this.add.image(0, 0, 'background').setOrigin(0, 0);
-    bg.width = game.config.width;
-    bg.height = game.config.height;
+    bg.width = game.scale.width;
+    bg.height = game.scale.height;
 
     this.input.on('pointerdown', (pointer) => {
         customer.destroy();
