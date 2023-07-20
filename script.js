@@ -10,23 +10,27 @@ class Customer extends Phaser.Physics.Arcade.Sprite {
         super(scene, x, y, texture);
         scene.add.existing(this);
 
-        this.width = 100;
-        this.height = 100;
-
         this.order = getOrder(level);
         console.log(this.order);
+
+        this.request = scene.add.text(x, y, this.order.request, { fontFamily: 'Arial', fontSize: 24, color: '#000000' }).setOrigin(0, 1);
+    }
+
+    destroy() {
+        super.destroy();
+        this.request.destroy();
     }
 }
 
 const config = {
     type: Phaser.AUTO,
-    width: '100%',
-    height: '100%',
     parent: 'game',
 
     scale: {
         mode: Phaser.Scale.FIT,
-        autoCenter: Phaser.Scale.CENTER_BOTH
+        autoCenter: Phaser.Scale.CENTER_BOTH,
+        width: 800,
+        height: 600,
     },
 
     scene: {
@@ -58,8 +62,7 @@ function preload() {
 
 function create() {
     const bg = this.add.image(0, 0, 'background').setOrigin(0, 0);
-    bg.width = game.scale.width;
-    bg.height = game.scale.height;
+    bg.setScale(game.config.width / bg.width, game.config.height / bg.height);
 
     this.input.on('pointerdown', (pointer) => {
         customer.destroy();
