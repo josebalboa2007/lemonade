@@ -67,8 +67,6 @@ function create() {
     });
 
     customer = new Customer(this, 400, 400);
-    this.input.on('pointerdown', onPointerDown);
-    customer = new Customer(this, 0, 0);
 }
 
 function onPointerDown(pointer) {
