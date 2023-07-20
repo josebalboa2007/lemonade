@@ -68,7 +68,7 @@ function onPointerDown(pointer) {
         const centerY = game.config.height / 2;
         const customerKey = 'customer' + Phaser.Math.Between(1, 5);
         const customerSize = Phaser.Math.Between(customer1_size, customer5_size);
-        const customer = this.add.image(centerX, centerY, customerKey);
+        customer = new Customer(this, centerX, centerY);
         const scalePercentage = customerSize / 100;
         customer.setScale(scalePercentage);
         clickEnabled = false;
