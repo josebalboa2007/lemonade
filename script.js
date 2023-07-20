@@ -13,7 +13,8 @@ class Customer extends Phaser.Physics.Arcade.Sprite {
         this.order = getOrder(level);
         console.log(this.order);
 
-        this.request = scene.add.text(x, y, this.order.request, { fontFamily: 'Arial', fontSize: 24, color: '#000000' }).setOrigin(0, 1);
+        this.request = scene.add.text(x + 50, y, this.order.request, { fontFamily: 'Arial', fontSize: 24, color: '#000000' }).setOrigin(0, 1);
+        
     }
 
     destroy() {
@@ -64,12 +65,12 @@ function create() {
     const bg = this.add.image(0, 0, 'background').setOrigin(0, 0);
     bg.setScale(game.config.width / bg.width, game.config.height / bg.height);
 
+    customer = new Customer(this, 400, 400);
+
     this.input.on('pointerdown', (pointer) => {
         customer.destroy();
         customer = new Customer(this, pointer.x, pointer.y);
     });
-
-    customer = new Customer(this, 400, 400);
 }
 
 function onPointerDown(pointer) {
