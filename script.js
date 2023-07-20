@@ -50,7 +50,8 @@ const customer5_size = 150;
 
 let clickEnabled = true;
 let customer;
-
+var next
+var onDown = false
 function preload() {
     this.load.image('background', 'images/background.png');
     this.load.image('customer1', 'images/customer1.png');
@@ -58,16 +59,14 @@ function preload() {
     this.load.image('customer3', 'images/customer3.png');
     this.load.image('customer4', 'images/customer4.png');
     this.load.image('customer5', 'images/customer5.png');
+    this.load.image('next', 'images/next.png');
 }
 
 function create() {
     const bg = this.add.image(0, 0, 'background').setOrigin(0, 0);
+    next = this.add.sprite(game.config.width*90/100, game.config.height/15, 'next').setInteractive();
+    next.setScale(game.config.width/4000, game.config.height/4000)
     bg.setScale(game.config.width / bg.width, game.config.height / bg.height);
-
-    this.input.on('pointerdown', (pointer) => {
-        customer.destroy();
-        customer = new Customer(this, pointer.x, pointer.y);
-    });
 
     customer = new Customer(this, 400, 400);
 }
@@ -94,5 +93,14 @@ function onPointerDown(pointer) {
 }
 
 function update() {
+
     // Implement your game's logic here
+    next.on('pointerdown', function (pointer){
+        onDown = true
+    })
+    if(onDown){
+        customer.destroy();
+        customer = new Customer(this, 400, 400)
+        onDown = false
+    }
 }
