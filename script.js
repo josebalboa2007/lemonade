@@ -1,6 +1,18 @@
 //This code will make it so that it will load 5 customers in and when you click anywhere on the screen, a new random customer will pop up from one of the 5 loaded customers.
 //I haven't made the customer images yet, so it's gonna look weird when you run it, but we're doing art tomorrow, so I'll add it then.
 
+class Customer extends Phaser.Physics.Arcade.Sprite {
+    constructor(scene, x, y) {
+        let texture = 'customer' + Phaser.Math.Between(1, 5);
+        super(scene, x, y, texture);
+        scene.add.existing(this);
+        scene.physics.add.existing(this);
+
+        this.order = getOrder(level);
+        console.log(this.order);
+    }
+}
+
 const config = {
     type: Phaser.AUTO,
     width: '100%',
@@ -11,13 +23,15 @@ const config = {
         mode: Phaser.Scale.FIT,
         autoCenter: Phaser.Scale.CENTER_BOTH
     },
-    
+
     scene: {
         preload: preload,
         create: create,
         update: update
     }
 };
+
+let level = 1;
 
 const game = new Phaser.Game(config);
 
@@ -28,6 +42,7 @@ const customer4_size = 125;
 const customer5_size = 150;
 
 let clickEnabled = true;
+let customer;
 
 function preload() {
     this.load.image('background', 'images/background.png');
@@ -44,6 +59,7 @@ function create() {
     bg.height = game.config.height;
 
     this.input.on('pointerdown', onPointerDown);
+    customer = new Customer(this, 0, 0);
 }
 
 function onPointerDown(pointer) {
