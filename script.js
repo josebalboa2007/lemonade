@@ -3,7 +3,7 @@
 
 class Customer extends Phaser.Physics.Arcade.Sprite {
     constructor(scene, x, y) {
-        let texture = 'customer' + Phaser.Math.Between(1, 5);
+        let texture = 'customer1';
         super(scene, x, y, texture);
         scene.add.existing(this);
         scene.physics.add.existing(this);
@@ -59,7 +59,7 @@ function create() {
     bg.height = game.config.height;
 
     this.input.on('pointerdown', onPointerDown);
-    customer = new Customer(this, 0, 0);
+    customer = new Customer(this, 400, 400);
 }
 
 function onPointerDown(pointer) {
