@@ -5,10 +5,13 @@ const config = {
     type: Phaser.AUTO,
     width: '100%',
     height: '100%',
+    parent: 'game',
+
     scale: {
         mode: Phaser.Scale.FIT,
         autoCenter: Phaser.Scale.CENTER_BOTH
     },
+    
     scene: {
         preload: preload,
         create: create,
@@ -27,18 +30,18 @@ const customer5_size = 150;
 let clickEnabled = true;
 
 function preload() {
-    this.load.image('background', 'background.png');
-    this.load.image('customer1', 'customer1.png');
-    this.load.image('customer2', 'customer2.png');
-    this.load.image('customer3', 'customer3.png');
-    this.load.image('customer4', 'customer4.png');
-    this.load.image('customer5', 'customer5.png');
+    this.load.image('background', 'images/background.png');
+    this.load.image('customer1', 'images/customer1.png');
+    this.load.image('customer2', 'images/customer2.png');
+    this.load.image('customer3', 'images/customer3.png');
+    this.load.image('customer4', 'images/customer4.png');
+    this.load.image('customer5', 'images/customer5.png');
 }
 
 function create() {
-    const backgroundImage = this.add.image(0, 0, 'background').setOrigin(0, 0);
-    backgroundImage.displayWidth = game.config.width;
-    backgroundImage.displayHeight = game.config.height;
+    const bg = this.add.image(0, 0, 'background').setOrigin(0, 0);
+    bg.width = game.config.width;
+    bg.height = game.config.height;
 
     this.input.on('pointerdown', onPointerDown);
 }
