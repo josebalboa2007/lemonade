@@ -3,7 +3,7 @@
 
 class Customer extends Phaser.Physics.Arcade.Sprite {
     constructor(scene, x, y) {
-        let texture = 'customer1';
+        let texture = 'customer' + Phaser.Math.Between(1, 5);
         super(scene, x, y, texture);
         scene.add.existing(this);
         scene.physics.add.existing(this);
@@ -59,7 +59,7 @@ function create() {
     bg.height = game.config.height;
 
     this.input.on('pointerdown', onPointerDown);
-    customer = new Customer(this, 400, 400);
+    customer = new Customer(this, 0, 0);
 }
 
 function onPointerDown(pointer) {
@@ -68,7 +68,7 @@ function onPointerDown(pointer) {
         const centerY = game.config.height / 2;
         const customerKey = 'customer' + Phaser.Math.Between(1, 5);
         const customerSize = Phaser.Math.Between(customer1_size, customer5_size);
-        customer = new Customer(this, centerX, centerY);
+        const customer = this.add.image(centerX, centerY, customerKey);
         const scalePercentage = customerSize / 100;
         customer.setScale(scalePercentage);
         clickEnabled = false;
