@@ -125,9 +125,9 @@ function getOrder(level) {
   let request = "I would like a " + order.name;
 
   if(addons.length > 0) {
-    request += " with ";
+    request += " with";
     for(let i = 0; i < addons.length; i++) {
-      request += (i != 0 && addons.length > 2 ? ", " : "") + (i + 1 == addons.length && addons.length > 1 ? "and " : "") + addons[i].name;
+      request += (i != 0 && addons.length > 2 ? "," : "") + (i + 1 == addons.length && addons.length > 1 ? " and " : " ") + addons[i].name;
     }
   }
 
