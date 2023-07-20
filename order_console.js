@@ -1,14 +1,32 @@
-//this is meant to be run in javascript console, so don't implement this into the index.html file
 function generateOrder() {
-    let w = Math.floor(Math.random() * 5) * 25;
-    let x = Math.floor(Math.random() * (5 - (w / 25))) * 25;
-    let y = Math.floor(Math.random() * (5 - (w / 25) - (x / 25))) * 25;
-    let z = 100 - w - x - y;
+    let drinks = [
+        { name: "Lemonade", percentage: 0 },
+        { name: "Chocolate Milk", percentage: 0 },
+        { name: "Tea", percentage: 0 },
+        { name: "Coffee", percentage: 0 },
+    ];
 
-    console.log(w + "% Lemonade");
-    console.log(x + "% Chocolate Milk");
-    console.log(y + "% Tea");
-    console.log(z + "% Coffee");
+    let firstDrinkIndex = Math.floor(Math.random() * 4);
+    let secondDrinkIndex = Math.floor(Math.random() * 4);
+
+    while (secondDrinkIndex === firstDrinkIndex) {
+        secondDrinkIndex = Math.floor(Math.random() * 4);
+    }
+
+    let firstDrinkPercentage = Math.floor(Math.random() * 2) * 50 + 50;
+
+    if (firstDrinkPercentage === 100) {
+        drinks[firstDrinkIndex].percentage = 100;
+    } else {
+        drinks[firstDrinkIndex].percentage = firstDrinkPercentage;
+        drinks[secondDrinkIndex].percentage = 100 - firstDrinkPercentage;
+    }
+
+    for (let drink of drinks) {
+        console.log(drink.percentage + "% " + drink.name);
+    }
+
+    if (drinks.some(drink => drink.percentage === 25)) {
+        generateOrder();
+    }
 }
-
-generateOrder();
