@@ -112,7 +112,8 @@ const extras = [
 ];
 
 function getOrder(level) {
-  let order = drinks[Math.floor(Math.random() * level)];
+  let orderIndex = Math.floor(Math.random() * level)
+  let order = drinks[orderIndex];
 
   let num = Math.floor(Math.random() * level)
   let addons = [];
@@ -135,6 +136,7 @@ function getOrder(level) {
 
   return {
     request: request,
+    index: orderIndex,
     ingredients: order.ingredients,
     // addons: addons,
   };
