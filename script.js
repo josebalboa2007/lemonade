@@ -61,6 +61,7 @@ function preload() {
     this.load.image('customer3', 'images/customer3.png');
     this.load.image('customer4', 'images/customer4.png');
     this.load.image('customer5', 'images/customer5.png');
+    this.load.image('customer5', 'images/customer5.png');
     this.load.image('next', 'images/next.png');
     this.load.image('bubble', 'images/Textbubble.png');
 }
