@@ -25,7 +25,15 @@ function preload() {
 }
 
 function create() {
-    
+    const bg = this.add.image(0, 0, 'background').setOrigin(0, 0);
+    textBubble = this.add.image(game.config.width/1.8, game.config.height/7.5, "bubble");
+    textBubble.setScale(game.config.width/1200, game.config.height/1500)
+    next = this.add.sprite(game.config.width*90/100, game.config.height/15, 'next').setInteractive();
+    next.setScale(game.config.width/4000, game.config.height/4000)
+    bg.setScale(game.config.width / bg.width, game.config.height / bg.height);
+
+    customer = new Customer(this, 400, 400);
+
 }
 
 // function onPointerDown(pointer) {

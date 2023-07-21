@@ -65,7 +65,7 @@ const drinks = [
         amount: 0.75,
       },
     ],
-    attributes: [" not sour", ",but sweet"],
+    attributes: [" not sour", ", but sweet"],
   },
 ];
 
@@ -114,24 +114,37 @@ const extras = [
     price: 1,
   },
 ];
-
+var response = [
+  {
+    start:"Can I have ",
+    end: ", please."},
+  {
+    start:"gimme ",
+    end:" now!"
+  },
+  {
+    start: "I would like ",
+    end:"."
+  }
+]
 function getOrder(level, easy) {
-  let orderIndex = Math.floor(Math.random() * level);
+  let politeLevel = Phaser.Math.Between(0,2)
+  let orderIndex = Math.floor(Math.random() * level)
   let order = drinks[orderIndex];
-  let request;
-  let num = Math.floor(Math.random() * level);
+  let num = Math.floor(Math.random() * level)
   let addons = [];
 
   for (let i = 0; i < num; i++) {
     let extra = extras[Math.floor(Math.random() * extras.length)];
     addons.push(extra);
   }
-
-  if (easy) {
-    request = "I would like a " + order.name;
-  } else {
-    request = "I would like something";
-    for (let i = 0; i < order.attributes.length; i++) {
+  
+  let request = response[politeLevel].start;
+  if(easy){
+  request += "a " + order.name;
+  }else{
+    request += "something"
+    for(let i = 0; i < order.attributes.length; i++){
       request += order.attributes[i];
     }
   }
@@ -142,8 +155,7 @@ function getOrder(level, easy) {
   //   }
   // }
 
-  request += ", please.";
-
+  request += response[politeLevel].end
   return {
     request: request,
     index: orderIndex,
