@@ -15,10 +15,7 @@ const drinks = [
         amount: 0.5,
       },
     ],
-    attributes:[
-      " sour",
-      " and sweet"
-    ]
+    attributes: [" sour", " and sweet"],
   },
   {
     name: "coffee",
@@ -36,10 +33,7 @@ const drinks = [
         amount: 0.5,
       },
     ],
-    attributes:[
-      " bitter",
-      " and caffinated"
-    ]
+    attributes: [" bitter", " and caffinated"],
   },
   {
     name: "tea",
@@ -57,10 +51,7 @@ const drinks = [
         amount: 0.5,
       },
     ],
-    attributes:[
-      " caffinated",
-      ", but not bitter"
-    ]
+    attributes: [" caffinated", ", but not bitter"],
   },
   {
     name: "chocolate milk",
@@ -74,10 +65,7 @@ const drinks = [
         amount: 0.75,
       },
     ],
-    attributes:[
-      " not sour",
-      ",but sweet"
-    ]
+    attributes: [" not sour", ",but sweet"],
   },
 ];
 
@@ -109,7 +97,7 @@ const ingredients = [
   {
     name: "milk",
     price: 2,
-  }
+  },
 ];
 
 const extras = [
@@ -128,21 +116,22 @@ const extras = [
 ];
 
 function getOrder(level, easy) {
-  let orderIndex = Math.floor(Math.random() * level)
+  let orderIndex = Math.floor(Math.random() * level);
   let order = drinks[orderIndex];
   let request;
-  let num = Math.floor(Math.random() * level)
+  let num = Math.floor(Math.random() * level);
   let addons = [];
 
   for (let i = 0; i < num; i++) {
     let extra = extras[Math.floor(Math.random() * extras.length)];
     addons.push(extra);
   }
-  if(easy){
-  request = "I would like a " + order.name;
-  }else{
-    request = "I would like something"
-    for(let i = 0; i < order.attributes.length; i++){
+
+  if (easy) {
+    request = "I would like a " + order.name;
+  } else {
+    request = "I would like something";
+    for (let i = 0; i < order.attributes.length; i++) {
       request += order.attributes[i];
     }
   }
