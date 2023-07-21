@@ -132,7 +132,7 @@ var response = [
     end: ", please."},
   {
     start:"gimme ",
-    end:"now."
+    end:" now."
   },
   {
     start: "I would like ",
