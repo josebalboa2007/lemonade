@@ -13,7 +13,7 @@ class Customer extends Phaser.Physics.Arcade.Sprite {
         this.order = getOrder(level);
         console.log(this.order);
 
-        this.request = scene.add.text(x + 50, y, this.order.request, { fontFamily: 'Arial', fontSize: 24, color: '#000000' }).setOrigin(0, 1);
+        this.request = scene.add.text(x-175, y-300, this.order.request, { fontFamily: 'Arial', fontSize: 24, color: '#000000' }).setOrigin(0, 1);
         
     }
 
@@ -52,6 +52,7 @@ const customer5_size = 150;
 let clickEnabled = true;
 let customer;
 var next
+var textBubble;
 var onDown = false
 function preload() {
     this.load.image('background', 'images/background.png');
@@ -61,10 +62,13 @@ function preload() {
     this.load.image('customer4', 'images/customer4.png');
     this.load.image('customer5', 'images/customer5.png');
     this.load.image('next', 'images/next.png');
+    this.load.image('bubble', 'images/Textbubble.png');
 }
 
 function create() {
     const bg = this.add.image(0, 0, 'background').setOrigin(0, 0);
+    textBubble = this.add.image(game.config.width/1.8, game.config.height/7.5, "bubble");
+    textBubble.setScale(game.config.width/1200, game.config.height/1500)
     next = this.add.sprite(game.config.width*90/100, game.config.height/15, 'next').setInteractive();
     next.setScale(game.config.width/4000, game.config.height/4000)
     bg.setScale(game.config.width / bg.width, game.config.height / bg.height);
