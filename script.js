@@ -43,11 +43,11 @@ const config = {
 
 const game = new Phaser.Game(config);
 
-const customer1_size = 50;
-const customer2_size = 75;
-const customer3_size = 100;
-const customer4_size = 125;
-const customer5_size = 150;
+// const customer1_size = 50;
+// const customer2_size = 75;
+// const customer3_size = 100;
+// const customer4_size = 100;
+// const customer5_size = 100;
 
 let clickEnabled = true;
 let customer;
@@ -77,26 +77,26 @@ function create() {
 
 }
 
-function onPointerDown(pointer) {
-    if (clickEnabled) {
-        // const centerX = game.config.width / 2;
-        // const centerY = game.config.height / 2;
-        // const customerKey = 'customer' + Phaser.Math.Between(1, 5);
-        // const customerSize = Phaser.Math.Between(customer1_size, customer5_size);
-        // customer = new Customer(this, centerX, centerY);
-        // const scalePercentage = customerSize / 100;
-        // customer.setScale(scalePercentage);
-        // clickEnabled = false;
-        const centerX = game.config.width / 2;
-        const centerY = game.config.height / 2;
-        const customerKey = 'customer' + Phaser.Math.Between(1, 5);
-        const customerSize = Phaser.Math.Between(customer1_size, customer5_size);
-        const customer = this.add.image(centerX, centerY, customerKey);
-        const scalePercentage = customerSize / 100;
-        customer.setScale(scalePercentage);
-        clickEnabled = false;
-    }
-}
+// function onPointerDown(pointer) {
+//     if (clickEnabled) {
+//         const centerX = game.config.width / 2;
+//         const centerY = game.config.height / 2;
+//         const customerKey = 'customer' + Phaser.Math.Between(1, 5);
+//         const customerSize = Phaser.Math.Between(customer1_size, customer5_size);
+//         customer = new Customer(this, centerX, centerY);
+//         const scalePercentage = customerSize / 100;
+//         customer.setScale(scalePercentage);
+//         clickEnabled = false;
+//         const centerX = game.config.width / 2;
+//         const centerY = game.config.height / 2;
+//         const customerKey = 'customer' + Phaser.Math.Between(1, 5);
+//         const customerSize = Phaser.Math.Between(customer1_size, customer5_size);
+//         const customer = this.add.image(centerX, centerY, customerKey);
+//         const scalePercentage = customerSize / 100;
+//         customer.setScale(scalePercentage);
+//         clickEnabled = false;
+//     }
+// }
 
 function update() {
 
