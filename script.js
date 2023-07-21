@@ -10,10 +10,10 @@ class Customer extends Phaser.Physics.Arcade.Sprite {
         super(scene, x, y, texture);
         scene.add.existing(this);
 
-        this.order = getOrder(level);
+        this.order = getOrder(level, Math.round(Math.random()));
         console.log(this.order);
-
-        this.request = scene.add.text(x-175, y-300, this.order.request, { fontFamily: 'Arial', fontSize: 24, color: '#000000' }).setOrigin(0, 1);
+        let requestStyle = { fontFamily: 'Arial', fontSize: 24, color: '#000000', wordWrap: { width:450, useAdvancedWrap: true} }
+        this.request = scene.add.text(x-160, y-295, this.order.request, requestStyle).setOrigin(0, 1);
         
     }
 

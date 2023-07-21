@@ -14,6 +14,10 @@ const drinks = [
         name: "water",
         amount: 0.5,
       },
+    ],
+    attributes:[
+      " sour",
+      " and sweet"
     ]
   },
   {
@@ -31,6 +35,10 @@ const drinks = [
         name: "water",
         amount: 0.5,
       },
+    ],
+    attributes:[
+      " bitter",
+      " and caffinated"
     ]
   },
   {
@@ -48,6 +56,10 @@ const drinks = [
         name: "water",
         amount: 0.5,
       },
+    ],
+    attributes:[
+      " caffinated",
+      ", but not bitter"
     ]
   },
   {
@@ -61,6 +73,10 @@ const drinks = [
         name: "milk",
         amount: 0.75,
       },
+    ],
+    attributes:[
+      " not sour",
+      ",but sweet"
     ]
   },
 ];
@@ -111,10 +127,10 @@ const extras = [
   },
 ];
 
-function getOrder(level) {
+function getOrder(level, easy) {
   let orderIndex = Math.floor(Math.random() * level)
   let order = drinks[orderIndex];
-
+  let request;
   let num = Math.floor(Math.random() * level)
   let addons = [];
 
@@ -122,9 +138,14 @@ function getOrder(level) {
     let extra = extras[Math.floor(Math.random() * extras.length)];
     addons.push(extra);
   }
-
-  let request = "I would like a " + order.name;
-
+  if(easy){
+  request = "I would like a " + order.name;
+  }else{
+    request = "I would like something"
+    for(let i = 0;i<order.attributes.length;i++){
+      request +=order.attributes[i];
+    }
+  }
   // if(addons.length > 0) {
   //   request += " with";
   //   for(let i = 0; i < addons.length; i++) {
