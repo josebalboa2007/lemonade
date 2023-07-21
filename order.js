@@ -142,8 +142,8 @@ function getOrder(level, easy) {
   request = "I would like a " + order.name;
   }else{
     request = "I would like something"
-    for(let i = 0;i<order.attributes.length;i++){
-      request +=order.attributes[i];
+    for(let i = 0; i < order.attributes.length; i++){
+      request += order.attributes[i];
     }
   }
   // if(addons.length > 0) {
